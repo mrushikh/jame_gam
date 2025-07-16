@@ -165,6 +165,7 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space)) {
 
             rb.gravityScale = 2;
+            umbrellaOpenGlide.Stop();
         }
 
         //dash

@@ -140,15 +140,18 @@ public class playerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
             if (OnGround)
             {
+                OnGround = false;
                 rb.gravityScale = 2;
                 // Make our player jump
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, JumpForce);
-                OnGround = false;
+                
             }
             else
-            {
+            {   
+                rb.linearVelocityY = 0;
                 rb.gravityScale = 0.2f;
             }
 

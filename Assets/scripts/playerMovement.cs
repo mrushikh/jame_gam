@@ -105,12 +105,13 @@ public class playerMovement : MonoBehaviour
             Debug.Log("ded");
         }
     }
-
     
+
 
     // Update is called once per frame
     void Update()
     {
+       
         if (isDashing)
         {
             return;
@@ -134,28 +135,42 @@ public class playerMovement : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.Space) && OnGround)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Make our player jump
-            rb.linearVelocity = new Vector2(rb.linearVelocityX, JumpForce);
-            OnGround = false;
+            if (OnGround)
+            {
+                rb.gravityScale = 2;
+                // Make our player jump
+                rb.linearVelocity = new Vector2(rb.linearVelocityX, JumpForce);
+                OnGround = false;
+            }
+            else
+            {
+                rb.gravityScale = 0.2f;
+            }
+
 
 
         }
 
-        
+        if (Input.GetKeyUp(KeyCode.Space)) {
+
+            rb.gravityScale = 2;
+        }
+
         //dash
-        if(Input.GetKeyDown(KeyCode.Mouse0) && canDash)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canDash)
         {
-            if (math.abs(Input.GetAxisRaw("Vertical")) > 0||math.abs(moveX)==0f)
+            if (math.abs(Input.GetAxisRaw("Vertical")) > 0 || math.abs(moveX) == 0f)
             {
                 StartCoroutine(Dash("up"));
             }
-            else {
+            else
+            {
                 StartCoroutine(Dash("notUp"));
             }
-           
-            
+
+
         }
         if (Input.GetKey(KeyCode.Escape))
         {

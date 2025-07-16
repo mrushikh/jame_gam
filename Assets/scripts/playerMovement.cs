@@ -3,6 +3,8 @@ using System.Collections;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class playerMovement : MonoBehaviour
 {   //movement
@@ -19,6 +21,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask GroundLayer;
     public BoxCollider2D GroundCollider;
     private bool OnGround;
+    public StudioEventEmitter PlayerJump;
 
     //dashing
     public bool canDash=false;

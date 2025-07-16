@@ -15,11 +15,21 @@ public class umbrellaScript : MonoBehaviour
         }
         if (collision.tag.Equals("spikes"))
         {   
-            StartCoroutine(playerMovementScr.Dash("up"));
+            playerMovementScr.bounceUmbr();
+            playerMovementScr.canDash = true;
+            Debug.Log("isSpikes");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("spikes"))
+        {
+            playerMovementScr.bounceUmbr();
             playerMovementScr.canDash = true;
             Debug.Log("isSpikes");
         }
     }
     // Update is called once per frame
-//aa
+    //aa
 }

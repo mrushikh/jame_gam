@@ -14,7 +14,7 @@ public class playerMovement : MonoBehaviour
     public float MoveSpeed = 5f;
     private SpriteRenderer SpriteRenderer;
     private bool leftfacing = false;
-    private bool onPlatform = false;
+    
 
     //jump
     public float JumpForce = 10f;
@@ -29,14 +29,16 @@ public class playerMovement : MonoBehaviour
     public float dashingPower = 10f;
     public float vertDashingPower = 10f;
     private float dashingTime = 0.1f;
-    private float dashingCooldown = 1f;
+   
 
     //umbrella
     public GameObject umbrellaPivot;
     public GameObject umbrella;
     public StudioEventEmitter umbrellaOpenGlide;
+    public float bounceUmbrPwr;
 
-    public Transform respawnPoint;
+    private bool isGliding;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,7 +50,9 @@ public class playerMovement : MonoBehaviour
     }
     
     private IEnumerator umbrellaDir()
-    {   if (!leftfacing)
+    {   
+        rb.gravityScale = 2f;
+        if (!leftfacing)
         {
             umbrellaPivot.transform.eulerAngles = new Vector3(0, 0, 0);
         }
@@ -77,7 +81,7 @@ public class playerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        float originalGravity = rb.gravityScale;
+        float originalGravity = 2f;
         rb.gravityScale = 0f;
         if (dir == "up")
         {
@@ -93,7 +97,10 @@ public class playerMovement : MonoBehaviour
         isDashing=false;
         
     }
-
+    public void bounceUmbr()
+    {
+        rb.linearVelocity = new Vector2(0f,bounceUmbrPwr);
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {   
 
@@ -104,18 +111,28 @@ public class playerMovement : MonoBehaviour
             umbrellaOpenGlide.SetParameter("GroundCollide", 1.0f);
         }
 
-        if (other.CompareTag("spikes"))
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (GroundLayer == (1 << collision.gameObject.layer))
         {
-            Debug.Log("ded");
+            OnGround = false;
+            
         }
     }
-    
-
 
     // Update is called once per frame
     void Update()
-    {
-       
+    {   
+        if(rb.gravityScale == 0.2f)
+        {
+            isGliding = true;
+        }
+        else
+        {
+            isGliding = false;
+        }
         if (isDashing)
         {
             return;
@@ -150,7 +167,7 @@ public class playerMovement : MonoBehaviour
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, JumpForce);
                 PlayerJump.Play();
             }
-            else
+            else 
             {   
                 rb.linearVelocityY = 0;
                 rb.gravityScale = 0.2f;
@@ -182,10 +199,7 @@ public class playerMovement : MonoBehaviour
 
 
         }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        
 
         //umbrella
         if (Input.GetKeyDown(KeyCode.Mouse1))

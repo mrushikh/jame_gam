@@ -7,7 +7,7 @@ public class damagePlayer : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ba");
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene(0);

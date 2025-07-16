@@ -34,6 +34,7 @@ public class playerMovement : MonoBehaviour
     //umbrella
     public GameObject umbrellaPivot;
     public GameObject umbrella;
+    public StudioEventEmitter umbrellaOpenGlide;
 
     public Transform respawnPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -100,7 +101,7 @@ public class playerMovement : MonoBehaviour
         if (GroundLayer == (1 << other.gameObject.layer))
         {
             OnGround = true;
-
+            umbrellaOpenGlide.SetParameter("GroundCollide", 1.0f);
         }
 
         if (other.CompareTag("spikes"))
@@ -147,12 +148,14 @@ public class playerMovement : MonoBehaviour
                 rb.gravityScale = 2;
                 // Make our player jump
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, JumpForce);
-                
+                PlayerJump.Play();
             }
             else
             {   
                 rb.linearVelocityY = 0;
                 rb.gravityScale = 0.2f;
+                umbrellaOpenGlide.SetParameter("GroundCollide", 0.0f);
+                umbrellaOpenGlide.Play();
             }
 
 

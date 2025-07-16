@@ -1,0 +1,9 @@
+{1001228a-183c-49c5-b26b-0960199e70b4} bank:/Master
+{881c025e-6947-0587-3422-839ee86d762c} bank:/Master.strings
+{1c57a052-23d0-4d99-bb3f-b0ff7b5bb391} bus:/
+{57ac4484-aa77-4b6a-922e-f24ce5aee2ac} bus:/Reverb
+{9cd26261-56b9-4884-980f-870b0c0458d9} bus:/SFX
+{bbbd01da-5b05-4471-bd78-68b88e10cfdc} event:/Music/Music
+{60c68403-95cf-4d12-a7c8-07c5f2610441} event:/SFX/PlayerJump
+{08b4b582-159f-4ae9-aab0-a83772cc7bd8} event:/SFX/UmbrellaOpenGlide
+{a7cb4190-828c-4d4b-8095-032cc48949f5} parameter:/GroundCollide

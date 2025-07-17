@@ -97,9 +97,12 @@ public class playerMovement : MonoBehaviour
         isDashing=false;
         
     }
-    public void bounceUmbr()
+    public IEnumerator bounceUmbr()
     {
         rb.linearVelocity = new Vector2(0f,bounceUmbrPwr);
+        isDashing=true;
+        yield return new WaitForSeconds(0.2f);
+        isDashing=false;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {   
@@ -124,7 +127,8 @@ public class playerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+       
         if(rb.gravityScale == 0.2f)
         {
             isGliding = true;

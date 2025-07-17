@@ -9,11 +9,13 @@ public class birdMechanics : MonoBehaviour
     public Vector3 abovePlayerOffset;   // how far the bird should stop above the player
 
     // bird 
+    [Header("Bird Settings")]
     private Rigidbody2D bird;
-    private float birdSpeed = 4f;
-    private float birdRange = 6f;
-    private float birdFollowTime = 6f;
-    private float birdCooldown = 4f;
+    [SerializeField] private float birdSpeed = 4f;
+    [SerializeField] private float birdRange = 6f;
+    [SerializeField] private float birdFollowTime = 6f;
+    [SerializeField] private float birdCooldown = 4f;
+    public bool showRange = false;
 
     private bool playerInBounds = false;
     private bool stickDropped = false;
@@ -24,14 +26,17 @@ public class birdMechanics : MonoBehaviour
     {
         bird = gameObject.GetComponent<Rigidbody2D>();
         abovePlayerOffset = new Vector3(0, 5, 0);
-        player = GameObject.FindWithTag("Player").transform;
+        player = Player_Manager.Instance.player.transform;
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     Gizmos.color = Color.green;
-    //     Gizmos.DrawWireSphere(this.transform.position, birdRange);
-    // }
+    private void OnDrawGizmos()
+    {
+        if (showRange)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(this.transform.position, birdRange);
+        }
+    }
 
     void DropStick()
     {

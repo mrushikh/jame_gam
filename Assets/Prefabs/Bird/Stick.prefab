@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1759845917655756266}
   - component: {fileID: 2928575026356678463}
   - component: {fileID: 1860032580563219115}
-  - component: {fileID: 494134066341899674}
+  - component: {fileID: 6144666819193354584}
   m_Layer: 0
   m_Name: Stick
   m_TagString: Untagged
@@ -163,7 +163,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &494134066341899674
+--- !u!114 &6144666819193354584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

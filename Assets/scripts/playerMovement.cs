@@ -38,6 +38,7 @@ public class playerMovement : MonoBehaviour
     public GameObject umbrella;
     public StudioEventEmitter umbrellaOpenGlide;
     public float bounceUmbrPwr;
+    public bool downUmbr;
 
     
     
@@ -48,6 +49,7 @@ public class playerMovement : MonoBehaviour
         SpriteRenderer = rb.GetComponent<SpriteRenderer>();
         OnGround = false;
         canDash = false;    
+        downUmbr = false;
         umbrella.SetActive(false);
     }
     
@@ -70,13 +72,16 @@ public class playerMovement : MonoBehaviour
             }
             else
             {
+                downUmbr = true;
                 umbrellaPivot.transform.eulerAngles = new Vector3(0, 0, -90);
+                
             }
 
         }
      
         umbrella.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        downUmbr=false;
         umbrella.SetActive(false);
     }
     public IEnumerator Dash(string dir)

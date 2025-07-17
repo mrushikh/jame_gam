@@ -9,27 +9,16 @@ public class umbrellaScript : MonoBehaviour
         if (collision.tag.Equals("damageBall"))
         {
             playerMovementScr.canDash = true;
-            Debug.Log("nowDash");
+            
             Destroy(collision.gameObject);
             
         }
-        if (collision.tag.Equals("spikes"))
+        if (collision.tag.Equals("spikes")&&playerMovementScr.downUmbr==true)
         {   
             playerMovementScr.bounceUmbr();
             playerMovementScr.canDash = true;
-            Debug.Log("isSpikes");
+            
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag.Equals("spikes"))
-        {
-            playerMovementScr.bounceUmbr();
-            playerMovementScr.canDash = true;
-            Debug.Log("isSpikes");
-        }
-    }
-    // Update is called once per frame
-    //aa
 }

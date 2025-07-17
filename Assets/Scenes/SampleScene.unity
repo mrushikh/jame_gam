@@ -1883,8 +1883,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  GroundCollider: {fileID: 733381744}
   PlayerJump: {fileID: 1426010178}
+  boxSize: {x: 0.33, y: 0.12}
+  castDistance: 0.37
   canDash: 1
   dashingPower: 5
   vertDashingPower: 8
@@ -1892,6 +1893,7 @@ MonoBehaviour:
   umbrella: {fileID: 1280111057}
   umbrellaOpenGlide: {fileID: 1426010179}
   bounceUmbrPwr: 8
+  downUmbr: 0
 --- !u!212 &1426010176
 SpriteRenderer:
   m_ObjectHideFlags: 0

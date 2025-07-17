@@ -19,9 +19,11 @@ public class playerMovement : MonoBehaviour
     //jump
     public float JumpForce = 10f;
     public LayerMask GroundLayer;
-    public BoxCollider2D GroundCollider;
+    
     private bool OnGround;
     public StudioEventEmitter PlayerJump;
+    public Vector2 boxSize;
+    public float castDistance;
 
     //dashing
     public bool canDash=false;
@@ -37,7 +39,7 @@ public class playerMovement : MonoBehaviour
     public StudioEventEmitter umbrellaOpenGlide;
     public float bounceUmbrPwr;
 
-    private bool isGliding;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -97,46 +99,34 @@ public class playerMovement : MonoBehaviour
         isDashing=false;
         
     }
-    public IEnumerator bounceUmbr()
+    public void bounceUmbr()
     {
         rb.linearVelocity = new Vector2(0f,bounceUmbrPwr);
-        isDashing=true;
-        yield return new WaitForSeconds(0.2f);
-        isDashing=false;
+        
     }
-    public void OnTriggerEnter2D(Collider2D other)
-    {   
-
-        // Check if we collided with the ground
-        if (GroundLayer == (1 << other.gameObject.layer))
+   public void isGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up,castDistance,GroundLayer))
         {
             OnGround = true;
-            umbrellaOpenGlide.SetParameter("GroundCollide", 1.0f);
-        }
 
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (GroundLayer == (1 << collision.gameObject.layer))
-        {
-            OnGround = false;
-            
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-        if(rb.gravityScale == 0.2f)
-        {
-            isGliding = true;
         }
         else
         {
-            isGliding = false;
+            OnGround=false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position-transform.up*castDistance, boxSize);
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        //groundCheck
+        isGrounded();
+
         if (isDashing)
         {
             return;

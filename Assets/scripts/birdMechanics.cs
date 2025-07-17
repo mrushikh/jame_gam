@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class birdMechanics : MonoBehaviour
 {
@@ -7,8 +8,13 @@ public class birdMechanics : MonoBehaviour
     public GameObject stick;
     public Vector3 abovePlayerOffset;   // how far the bird should stop above the player
 
+    // bird 
     private Rigidbody2D bird;
     private float birdSpeed = 4f;
+    private float birdRange = 6f;
+    private float birdFollowTime = 6f;
+    private float birdCooldown = 4f;
+
     private bool playerInBounds = false;
     private bool stickDropped = false;
     private float counter = 6f; // how long the bird should follow the player
@@ -18,7 +24,14 @@ public class birdMechanics : MonoBehaviour
     {
         bird = gameObject.GetComponent<Rigidbody2D>();
         abovePlayerOffset = new Vector3(0, 5, 0);
+        player = GameObject.FindWithTag("Player").transform;
     }
+
+    // private void OnDrawGizmos()
+    // {
+    //     Gizmos.color = Color.green;
+    //     Gizmos.DrawWireSphere(this.transform.position, birdRange);
+    // }
 
     void DropStick()
     {
@@ -29,7 +42,7 @@ public class birdMechanics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.position, transform.position) <= 6f)
+        if (Vector3.Distance(player.position, transform.position) <= birdRange)
             playerInBounds = true;
 
         if (playerInBounds)
@@ -39,11 +52,21 @@ public class birdMechanics : MonoBehaviour
             {
                 // following the player
                 Vector3 targetPosition = player.position + abovePlayerOffset;
-                transform.position = Vector3.Lerp(transform.position, targetPosition, birdSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, birdSpeed * Time.deltaTime);
             }
             else if (!stickDropped)
-            {
                 DropStick();
+        }
+        if (stickDropped)
+        {
+            birdCooldown -= Time.deltaTime;
+            if (birdCooldown < 0)
+            {
+                // reset bird mechanics
+                playerInBounds = false;
+                stickDropped = false;
+                counter = birdFollowTime;
+                birdCooldown = 4f;
             }
         }
     }

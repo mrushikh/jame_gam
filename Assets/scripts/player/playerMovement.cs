@@ -39,22 +39,30 @@ public class playerMovement : MonoBehaviour
     public StudioEventEmitter umbrellaOpenGlide;
     public float bounceUmbrPwr;
     public bool downUmbr;
+    [SerializeField] private float umbrellaCooldown = 1.5f;
+    private bool canUmbre;
 
-    
-    
+    //umbrellaImg
+    public GameObject umbrellaImgPivot;
+    public SpriteRenderer umbrellaImg;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        canUmbre = true;
         rb = GetComponent<Rigidbody2D>();
         SpriteRenderer = rb.GetComponent<SpriteRenderer>();
         OnGround = false;
         canDash = false;    
         downUmbr = false;
         umbrella.SetActive(false);
+        umbrellaImg.enabled = false;
     }
     
     private IEnumerator umbrellaDir()
-    {   
+    {
+        umbrellaCooldown = 2f;
         rb.gravityScale = 2f;
         if (!leftfacing)
         {
@@ -84,8 +92,10 @@ public class playerMovement : MonoBehaviour
         downUmbr=false;
         umbrella.SetActive(false);
     }
+    
     public IEnumerator Dash(string dir)
     {
+        
         canDash = false;
         isDashing = true;
         float originalGravity = 2f;
@@ -93,16 +103,26 @@ public class playerMovement : MonoBehaviour
         if (dir == "up")
         {
             rb.linearVelocity = new Vector2(0f,vertDashingPower);
+            umbrellaImgPivot.transform.eulerAngles = new Vector3(0, 0, -90); ;
+            
         }
         else
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX * dashingPower, 0f);
+            if (leftfacing)
+            {
+                umbrellaImgPivot.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else {
+                umbrellaPivot.transform.eulerAngles = new Vector3(0, 0, -90);
+            }
         }
-            
+        
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing=false;
-        
+       
+
     }
     public void bounceUmbr()
     {
@@ -129,14 +149,39 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rb.gravityScale == 0.2f)
+        {   
+            umbrellaImgPivot.transform.eulerAngles =new Vector3(0, 0, 90); ;
+            umbrellaImg.enabled = true;
+        }
+        else
+        {
+            umbrellaImg.enabled=false;
+        }
+
+        
+        //umbrella cooldown
+        if (umbrellaCooldown > 0)
+        {
+            umbrellaCooldown -= Time.deltaTime;
+            canUmbre = false;
+        }
+        else
+        {   
+            canUmbre = true;
+        }
         //groundCheck
         isGrounded();
 
         if (isDashing)
         {
+            umbrellaImg.enabled = true;
             return;
+        }else if(rb.gravityScale != 0.2f)
+        {
+            umbrellaImg.enabled = false;
         }
-        moveX = Input.GetAxisRaw("Horizontal");
+            moveX = Input.GetAxisRaw("Horizontal");
         if (moveX < 0)
         {
             if (leftfacing == false)
@@ -201,7 +246,7 @@ public class playerMovement : MonoBehaviour
         
 
         //umbrella
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1)&&canUmbre==true)
         {
             StartCoroutine(umbrellaDir());
         }

@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 733381744}
   m_Layer: 0
   m_Name: groundCheck
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2185,6 +2185,7 @@ MonoBehaviour:
   umbrellaOpenGlide: {fileID: 1426010179}
   bounceUmbrPwr: 8
   downUmbr: 0
+  umbrellaCooldown: 1.5
 --- !u!212 &1426010176
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player_Manager : MonoBehaviour
@@ -7,7 +8,11 @@ public class Player_Manager : MonoBehaviour
 
     [Header("Player Settings")]
     public GameObject player;
+
+    [Header("Respawn Settings")]
     public Transform playerSpawn;
+    public float respawnTime = 0.5f;
+
 
     #region Singlton
 
@@ -32,7 +37,16 @@ public class Player_Manager : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        StartCoroutine(respawnTimer());
+    }
+
+    private IEnumerator respawnTimer()
+    {
+        player.SetActive(false);
+        yield return new WaitForSeconds(respawnTime);   
+        player.SetActive(true);
         player.transform.position = playerSpawn.position;
+
     }
 
 

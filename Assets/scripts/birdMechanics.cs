@@ -25,7 +25,7 @@ public class birdMechanics : MonoBehaviour
     void Start()
     {
         bird = gameObject.GetComponent<Rigidbody2D>();
-        abovePlayerOffset = new Vector3(0, 5, 0);
+        abovePlayerOffset = new Vector3(0, 4, 0);
         player = Player_Manager.Instance.player.transform;
     }
 

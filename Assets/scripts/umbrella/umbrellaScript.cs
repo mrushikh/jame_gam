@@ -6,18 +6,16 @@ public class umbrellaScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("damageBall"))
+        if (collision.tag.Equals("damageBall") || collision.tag.Equals("stick"))
         {
             playerMovementScr.canDash = true;
-            
             Destroy(collision.gameObject);
-            
         }
-        if (collision.tag.Equals("spikes")&&playerMovementScr.downUmbr==true)
-        {   
+            
+        if (collision.tag.Equals("spikes") && playerMovementScr.downUmbr == true)
+        {
             playerMovementScr.bounceUmbr();
             playerMovementScr.canDash = true;
-            
         }
     }
 

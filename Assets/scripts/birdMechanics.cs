@@ -3,18 +3,18 @@ using System.Collections;
 
 public class birdMechanics : MonoBehaviour
 {
-    public Transform player;
-    public Transform ground;
+    private Transform player;
+    private Transform ground;
     public GameObject stick;
     public Vector3 abovePlayerOffset;   // how far the bird should stop above the player
 
     // bird 
     [Header("Bird Settings")]
-    private Rigidbody2D bird;
     [SerializeField] private float birdSpeed = 4f;
     [SerializeField] private float birdRange = 6f;
     [SerializeField] private float birdFollowTime = 6f;
     [SerializeField] private float birdCooldown = 4f;
+    private Rigidbody2D bird;
     public bool showRange = false;
 
     private bool playerInBounds = false;
@@ -25,7 +25,7 @@ public class birdMechanics : MonoBehaviour
     void Start()
     {
         bird = gameObject.GetComponent<Rigidbody2D>();
-        abovePlayerOffset = new Vector3(0, 5, 0);
+        abovePlayerOffset = new Vector3(0, 4, 0);
         player = Player_Manager.Instance.player.transform;
     }
 

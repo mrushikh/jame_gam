@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{3837d1bf-46d0-4168-a5e0-9692d0a2fdcf}">
+	<object class="AudioFile" id="{2b962cf7-afbf-487d-b1e6-db027f780b8a}">
 		<property name="assetPath">
-			<value>Music_Section5_Ambient.wav</value>
+			<value>Music_Section5.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

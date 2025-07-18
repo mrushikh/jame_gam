@@ -134,7 +134,7 @@ public class playerMovement : MonoBehaviour
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up,castDistance,GroundLayer))
         {
             OnGround = true;
-
+            umbrellaOpenGlide.Stop();
         }
         else
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 public class ShowBoxCollider2DGizmo : MonoBehaviour
 {
     private BoxCollider2D col;
-
+    public bool showColldierBounds = true;
     public Color color;
     private void Awake()
     {
@@ -16,7 +16,12 @@ public class ShowBoxCollider2DGizmo : MonoBehaviour
         if (col == null) col = GetComponent<BoxCollider2D>();
         Gizmos.color = color;
         // Draw a wireframe box at the collider’s bounds
-        Vector2 pos = (Vector2)transform.position + col.offset;
-        Gizmos.DrawWireCube(pos, col.size);
+
+        if (showColldierBounds)
+        {
+            Vector2 pos = (Vector2)transform.position + col.offset;
+            Gizmos.DrawWireCube(pos, col.size);
+        }
+
     }
 }

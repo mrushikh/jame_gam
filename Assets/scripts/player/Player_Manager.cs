@@ -12,8 +12,11 @@ public class Player_Manager : MonoBehaviour
     public GameObject player;
 
     [Header("Respawn Settings")]
-    public Transform playerSpawn;
-    public float respawnTime = 0.5f;
+    public Transform respawnPoint;
+    public float respawnDelay = 0.5f;
+    private bool isRespawning = false;
+
+    private Animator playerAnim;
 
     public StudioEventEmitter playerKilled;
 
@@ -23,8 +26,9 @@ public class Player_Manager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
-        playerSpawn = GameObject.FindWithTag("Respawn").gameObject.transform;
-        player.transform.position = playerSpawn.transform.position;
+        respawnPoint = GameObject.FindWithTag("Respawn").gameObject.transform;
+        playerAnim = player.GetComponentInChildren<Animator>();
+        player.transform.position = respawnPoint.transform.position;
         if (Instance == null)
         {
             Instance = this;
@@ -40,17 +44,51 @@ public class Player_Manager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        playerKilled.Play();
-        StartCoroutine(respawnTimer());
+        StartCoroutine(RespawnRoutine());
     }
 
-    private IEnumerator respawnTimer()
+    private IEnumerator RespawnRoutine()
     {
-        player.SetActive(false);
-        yield return new WaitForSeconds(respawnTime);   
-        player.SetActive(true);
-        player.transform.position = playerSpawn.position;
+        isRespawning = true;
 
+        // 1) Play SFX + fire death anim
+        playerKilled.Play();
+        player.GetComponent<playerMovement>().enabled = false;
+        playerAnim.SetTrigger("onDeath");
+
+        // 2) Grab the length of the currently playing death clip
+        float deathLength = 0f;
+        var clips = playerAnim.GetCurrentAnimatorClipInfo(0);
+        for (int i = 0; i < clips.Length; i++)
+        {
+            if (clips[i].clip.name == "Player_Death")
+            {
+                deathLength = clips[i].clip.length;
+                break;
+            }
+        }
+        // fallback if we couldn’t find it:
+        if (deathLength <= 0f) deathLength = 1f;
+
+        // 3) Wait out the animation + any extra delay
+        yield return new WaitForSeconds(deathLength + respawnDelay);
+
+        // 4) Teleport the player’s transform
+        player.transform.position = respawnPoint.position;
+
+        // 5) Reset physics so they don’t immediately fall
+        var rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.gravityScale = 1f;
+            player.GetComponent<playerMovement>().enabled = true;
+        }
+
+        // 6) Snap Animator back to Idle (no blends)
+        playerAnim.ResetTrigger("onDeath");
+        playerAnim.Play("Player_Idle", 0, 0f);
+        isRespawning = false;
     }
 
 

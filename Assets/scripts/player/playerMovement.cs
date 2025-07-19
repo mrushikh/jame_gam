@@ -31,16 +31,20 @@ public class playerMovement : MonoBehaviour
     public float dashingPower = 10f;
     public float vertDashingPower = 10f;
     private float dashingTime = 0.1f;
+    public StudioEventEmitter playerDash;
    
 
     //umbrella
     public GameObject umbrellaPivot;
     public GameObject umbrella;
-    public StudioEventEmitter umbrellaOpenGlide;
     public float bounceUmbrPwr;
     public bool downUmbr;
     [SerializeField] private float umbrellaCooldown = 1.5f;
     private bool canUmbre;
+    public StudioEventEmitter umbrellaOpenGlide;
+    public StudioEventEmitter umbrellaBlock;
+    public StudioEventEmitter umbrellaBlockRebound;
+    public StudioEventEmitter umbrellaSheathe;
 
     //umbrellaImg
     public GameObject umbrellaImgPivot;
@@ -93,9 +97,11 @@ public class playerMovement : MonoBehaviour
         }
      
         umbrella.SetActive(true);
+        umbrellaBlock.Play();
         yield return new WaitForSeconds(0.5f);
         downUmbr=false;
         umbrella.SetActive(false);
+        umbrellaSheathe.Play();
     }
     
     public IEnumerator Dash(string dir)
@@ -132,7 +138,7 @@ public class playerMovement : MonoBehaviour
     public void bounceUmbr()
     {
         rb.linearVelocity = new Vector2(0f,bounceUmbrPwr);
-        
+        umbrellaBlockRebound.Play();
     }
    public void isGrounded()
     {
@@ -243,10 +249,12 @@ public class playerMovement : MonoBehaviour
             if (math.abs(Input.GetAxisRaw("Vertical")) > 0 || math.abs(moveX) == 0f)
             {
                 StartCoroutine(Dash("up"));
+                playerDash.Play();
             }
             else
             {
                 StartCoroutine(Dash("notUp"));
+                playerDash.Play();
             }
 
 

@@ -541,6 +541,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3233133604211000427, guid: 4bab8498b39602c44a954d3317ff3e1b, type: 3}
+      propertyPath: playerKilled
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4300289471444258767, guid: 4bab8498b39602c44a954d3317ff3e1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7000003
@@ -1237,9 +1241,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 405852651}
+  - component: {fileID: 405852652}
   - component: {fileID: 405852650}
+  - component: {fileID: 405852653}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1266,8 +1272,8 @@ MonoBehaviour:
       Data4: 1160281806
     Path: event:/Music/Music
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1291,6 +1297,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405852652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405852649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684ead725b0a145deb3c0e95d6788ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bankLoader: {fileID: 1434692493}
+  musicEmitter: {fileID: 405852650}
+  ambienceEmitter: {fileID: 405852653}
+--- !u!114 &405852653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405852649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -880774938
+      Data2: 1137061934
+      Data3: 1732089228
+      Data4: -1656576513
+    Path: event:/SFX/Ambience
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &470853252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1504,7 +1556,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.692448, y: -0.0012199879, z: -10}
+  m_LocalPosition: {x: 19.609066, y: -0.0011498928, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4467,6 +4519,10 @@ GameObject:
   - component: {fileID: 1426010173}
   - component: {fileID: 1426010178}
   - component: {fileID: 1426010179}
+  - component: {fileID: 1426010181}
+  - component: {fileID: 1426010180}
+  - component: {fileID: 1426010182}
+  - component: {fileID: 1426010183}
   m_Layer: 0
   m_Name: Player_Capsule
   m_TagString: Player
@@ -4570,12 +4626,16 @@ MonoBehaviour:
   canDash: 1
   dashingPower: 5
   vertDashingPower: 8
+  playerDash: {fileID: 1426010182}
   umbrellaPivot: {fileID: 2085909193}
   umbrella: {fileID: 1280111057}
-  umbrellaOpenGlide: {fileID: 1426010179}
   bounceUmbrPwr: 8
   downUmbr: 0
   umbrellaCooldown: 1.5
+  umbrellaOpenGlide: {fileID: 1426010179}
+  umbrellaBlock: {fileID: 1426010181}
+  umbrellaBlockRebound: {fileID: 1426010183}
+  umbrellaSheathe: {fileID: 1426010180}
   umbrellaImgPivot: {fileID: 865780037}
   umbrellaImg: {fileID: 126292936}
 --- !u!4 &1426010177
@@ -4660,6 +4720,178 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1426010180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426010172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1311801895
+      Data2: 1242558914
+      Data3: -396319858
+      Data4: 1295253955
+    Path: event:/SFX/UmbrellaSheathe
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1426010181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426010172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1673931621
+      Data2: 1304387865
+      Data3: -737848188
+      Data4: -1119170150
+    Path: event:/SFX/UmbrellaBlock
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1426010182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426010172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -375958234
+      Data2: 1150759136
+      Data3: 1012641441
+      Data4: -352335434
+    Path: event:/SFX/PlayerDash
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1426010183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426010172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 992679600
+      Data2: 1118983278
+      Data3: 848562869
+      Data4: -1293907650
+    Path: event:/SFX/UmbrellaBlockRebound
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!1 &1434692492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434692494}
+  - component: {fileID: 1434692493}
+  m_Layer: 0
+  m_Name: FMODBankLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1434692493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434692492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47032462fcdbf409ba2d2ca7400b2900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Banks:
+  - Master
+  - Master.strings
+  Scene: SampleScene
+--- !u!4 &1434692494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434692492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.91761, y: 1.63169, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1439261002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6067,6 +6299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805672300}
   - component: {fileID: 1805672301}
+  - component: {fileID: 1805672302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6107,6 +6340,38 @@ MonoBehaviour:
   player: {fileID: 0}
   playerSpawn: {fileID: 0}
   respawnTime: 0.5
+  playerKilled: {fileID: 1805672302}
+--- !u!114 &1805672302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805672299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1424725060
+      Data2: 1314395813
+      Data3: -1569431424
+      Data4: 1841647894
+    Path: event:/SFX/PlayerKilled
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1811491816
 GameObject:
   m_ObjectHideFlags: 0
@@ -7136,3 +7401,4 @@ SceneRoots:
   - {fileID: 1278025500}
   - {fileID: 1805672300}
   - {fileID: 405852651}
+  - {fileID: 1434692494}

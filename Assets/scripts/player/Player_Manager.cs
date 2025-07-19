@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class Player_Manager : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class Player_Manager : MonoBehaviour
     public Transform playerSpawn;
     public float respawnTime = 0.5f;
 
+    public StudioEventEmitter playerKilled;
 
     #region Singlton
 
@@ -37,6 +40,7 @@ public class Player_Manager : MonoBehaviour
 
     public void RespawnPlayer()
     {
+        playerKilled.Play();
         StartCoroutine(respawnTimer());
     }
 

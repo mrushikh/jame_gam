@@ -96,9 +96,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5fff22e3-ca91-4076-bd61-39a5928b9ebe}">
-		<property name="volume">
-			<value>-2</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{0b6e63b4-d170-4ffc-926b-31484c4d87fe}</destination>
 		</relationship>
@@ -126,7 +123,7 @@
 			<destination>{3d09e609-7efa-4b7b-b9c1-dd16c712ec1e}</destination>
 		</relationship>
 		<relationship name="sounds">
-			<destination>{e6e838f6-6cf1-45e2-8097-ce6a32c5c684}</destination>
+			<destination>{1dadf81b-6e27-4210-843e-d7a7d3f2bae9}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8ef86322-0669-4169-9f3c-af7273bbfb38}">
@@ -157,6 +154,9 @@
 		</property>
 		<property name="timelockedOffset">
 			<value>0.15000000000000002</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{74397f42-a7c2-4f99-afdc-17ea91df0c07}</destination>
@@ -225,9 +225,9 @@
 			<destination>{f2c3cf2e-a3a7-4ab4-868f-d82841ef83a5}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{e6e838f6-6cf1-45e2-8097-ce6a32c5c684}">
+	<object class="SingleSound" id="{1dadf81b-6e27-4210-843e-d7a7d3f2bae9}">
 		<relationship name="audioFile">
-			<destination>{0b121a90-2b07-4db6-95be-76fcb3d54e8d}</destination>
+			<destination>{bb645d87-da04-4578-852b-6fc9cd893f60}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{2c3f157b-b998-4b7f-b949-d01ef63f2718}">

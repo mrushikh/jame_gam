@@ -1556,7 +1556,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.609066, y: -0.0011498928, z: -10}
+  m_LocalPosition: {x: 25, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4628,8 +4628,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   PlayerJump: {fileID: 1426010178}
-  boxSize: {x: 1, y: 0.1}
-  castDistance: 1
+  boxSize: {x: 0.43, y: 0.1}
+  castDistance: 0.67
   canDash: 1
   dashingPower: 5
   vertDashingPower: 8

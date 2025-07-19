@@ -8,6 +8,8 @@ TagManager:
   - ground
   - damageBall
   - stick
+  - nut
+  - slipPlatform
   layers:
   - Default
   - TransparentFX

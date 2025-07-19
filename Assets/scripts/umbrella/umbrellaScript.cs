@@ -6,7 +6,7 @@ public class umbrellaScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("damageBall") || collision.tag.Equals("stick"))
+        if (collision.tag.Equals("damageBall") || collision.tag.Equals("stick")|| collision.tag.Equals("nut"))
         {
             playerMovementScr.canDash = true;
             Destroy(collision.gameObject);

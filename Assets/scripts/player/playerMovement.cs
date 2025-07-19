@@ -46,9 +46,7 @@ public class playerMovement : MonoBehaviour
     public StudioEventEmitter umbrellaBlockRebound;
     public StudioEventEmitter umbrellaSheathe;
 
-    //umbrellaImg
-    public GameObject umbrellaImgPivot;
-    public SpriteRenderer umbrellaImg;
+    
 
     private Animator player_Anim;
 
@@ -61,7 +59,7 @@ public class playerMovement : MonoBehaviour
         canDash = false;    
         downUmbr = false;
         umbrella.SetActive(false);
-        umbrellaImg.enabled = false;
+        
 
 
         player_Anim = GetComponentInChildren<Animator>();
@@ -114,19 +112,13 @@ public class playerMovement : MonoBehaviour
         if (dir == "up")
         {
             rb.linearVelocity = new Vector2(0f,vertDashingPower);
-            umbrellaImgPivot.transform.eulerAngles = new Vector3(0, 0, -90); ;
+           
             
         }
         else
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX * dashingPower, 0f);
-            if (leftfacing)
-            {
-                umbrellaImgPivot.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            else {
-                umbrellaPivot.transform.eulerAngles = new Vector3(0, 0, -90);
-            }
+
         }
         
         yield return new WaitForSeconds(dashingTime);
@@ -163,15 +155,7 @@ public class playerMovement : MonoBehaviour
     {
         PlayerAnimator();
 
-        if (rb.gravityScale == 0.2f)
-        {   
-            umbrellaImgPivot.transform.eulerAngles =new Vector3(0, 0, 90); ;
-            umbrellaImg.enabled = true;
-        }
-        else
-        {
-            umbrellaImg.enabled=false;
-        }
+        
 
         
         //umbrella cooldown
@@ -189,11 +173,8 @@ public class playerMovement : MonoBehaviour
 
         if (isDashing)
         {
-            umbrellaImg.enabled = true;
+            
             return;
-        }else if(rb.gravityScale != 0.2f)
-        {
-            umbrellaImg.enabled = false;
         }
             moveX = Input.GetAxisRaw("Horizontal");
         if (moveX < 0)

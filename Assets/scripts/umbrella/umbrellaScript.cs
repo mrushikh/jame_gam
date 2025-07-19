@@ -8,14 +8,14 @@ public class umbrellaScript : MonoBehaviour
     {
         if (collision.tag.Equals("damageBall") || collision.tag.Equals("stick")|| collision.tag.Equals("nut"))
         {
-            playerMovementScr.canDash = true;
+            
             Destroy(collision.gameObject);
         }
             
         if (collision.tag.Equals("spikes") && playerMovementScr.downUmbr == true)
         {
             playerMovementScr.bounceUmbr();
-            playerMovementScr.canDash = true;
+           
         }
     }
 

@@ -31,6 +31,7 @@ public class playerMovement : MonoBehaviour
     public float dashingPower = 10f;
     public float vertDashingPower = 10f;
     private float dashingTime = 0.1f;
+    public float dashCooldown;
     public StudioEventEmitter playerDash;
    
 
@@ -56,7 +57,7 @@ public class playerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         SpriteRenderer = rb.GetComponent<SpriteRenderer>();
         OnGround = false;
-        canDash = false;    
+        canDash = true;    
         downUmbr = false;
         umbrella.SetActive(false);
         
@@ -112,19 +113,20 @@ public class playerMovement : MonoBehaviour
         if (dir == "up")
         {
             rb.linearVelocity = new Vector2(0f,vertDashingPower);
-           
-            
+                       
         }
         else
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX * dashingPower, 0f);
-
         }
         
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing=false;
-       
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
+
 
     }
     public void bounceUmbr()

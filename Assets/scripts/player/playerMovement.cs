@@ -46,8 +46,8 @@ public class playerMovement : MonoBehaviour
     public GameObject umbrellaImgPivot;
     public SpriteRenderer umbrellaImg;
 
+    private Animator player_Anim;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
         canUmbre = true;
@@ -58,6 +58,11 @@ public class playerMovement : MonoBehaviour
         downUmbr = false;
         umbrella.SetActive(false);
         umbrellaImg.enabled = false;
+
+
+        player_Anim = GetComponentInChildren<Animator>();
+
+
     }
     
     private IEnumerator umbrellaDir()
@@ -139,6 +144,7 @@ public class playerMovement : MonoBehaviour
         else
         {
             OnGround=false;
+
         }
     }
 
@@ -149,6 +155,8 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerAnimator();
+
         if (rb.gravityScale == 0.2f)
         {   
             umbrellaImgPivot.transform.eulerAngles =new Vector3(0, 0, 90); ;
@@ -264,4 +272,50 @@ public class playerMovement : MonoBehaviour
         // Make our player move left/right
         rb.linearVelocity = movement;
     }
+
+
+    private void PlayerAnimator()
+    {
+        // 1) Speed drives Idle <-> Walk
+        float speed = Mathf.Abs(rb.linearVelocity.x);
+        player_Anim.SetFloat("Speed", speed);
+
+        // 2) Ground vs. air
+        bool grounded = OnGround;
+        player_Anim.SetBool("isGrounded", grounded);
+
+        // 3) Jump start (rising)
+        bool jumping = !grounded && rb.linearVelocity.y > 0.1f;
+        player_Anim.SetBool("isJumping", jumping);
+
+        // 4) Falling (descending)
+        bool falling = !grounded && rb.linearVelocity.y < -0.1f;
+        player_Anim.SetBool("isFalling", falling);
+
+        // 5) Glide (umbrella slow - fall) - when in air and gravity is low
+        bool gliding = !grounded && rb.gravityScale < 1f;
+        player_Anim.SetBool("isGliding", gliding);
+
+        // 6) Dash trigger
+        if (canDash && Input.GetMouseButtonDown(0))
+            player_Anim.SetTrigger("Dash");
+
+        // 7) Umbrella Direction States
+        // (umbrellaImg.enabled is true whenever your umbrella is active)
+        bool umbrellaActive = umbrella.activeSelf;
+        player_Anim.SetBool("isUmbrellaUp", false);
+        player_Anim.SetBool("isUmbrellaDown", false);
+        player_Anim.SetBool("isUmbrellaSide", false);
+
+        if (umbrellaActive)
+        {
+            float v = Input.GetAxisRaw("Vertical");
+
+            player_Anim.SetBool("isUmbrellaUp", v > 0f);
+            player_Anim.SetBool("isUmbrellaDown", v < 0f);
+            player_Anim.SetBool("isUmbrellaSide", Mathf.Approximately(v, 0f));
+        }
+    }
+
 }
+

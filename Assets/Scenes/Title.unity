@@ -129,8 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 580269201}
   - component: {fileID: 580269204}
-  - component: {fileID: 580269205}
   - component: {fileID: 580269203}
+  - component: {fileID: 580269205}
   - component: {fileID: 580269202}
   m_Layer: 5
   m_Name: PlayButton

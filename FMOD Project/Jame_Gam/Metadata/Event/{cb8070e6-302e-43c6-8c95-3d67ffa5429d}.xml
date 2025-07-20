@@ -74,7 +74,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{7aa1c499-cbcf-4eb0-92fa-dab0366185e0}">
 		<property name="volume">
-			<value>4</value>
+			<value>8</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{15b2158f-64c9-43b5-9ec5-7d66b811a6c1}</destination>
@@ -91,7 +91,7 @@
 			<value>14.001666666666669</value>
 		</property>
 		<property name="volume">
-			<value>-3.5</value>
+			<value>-5.5</value>
 		</property>
 		<property name="spawnRate">
 			<value>26</value>
@@ -307,7 +307,7 @@
 	<object class="MixerBusFader" id="{17f636a1-af00-4fc7-9a08-729cac689d11}" />
 	<object class="ThreeEQEffect" id="{8ba7440c-4ec9-4143-a99a-b9d0855403eb}">
 		<property name="highGain">
-			<value>-2.5</value>
+			<value>-9</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2f6dec6f-4a06-4829-a355-6876c01c776a}">

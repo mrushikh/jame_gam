@@ -59,7 +59,11 @@
 			<destination>{9cd26261-56b9-4884-980f-870b0c0458d9}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{38450e7c-b99f-4e3d-b3f0-750a17f859b0}" />
+	<object class="EventAutomatableProperties" id="{38450e7c-b99f-4e3d-b3f0-750a17f859b0}">
+		<property name="triggerCooldown">
+			<value>1400</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{6d34decf-01f1-4469-acbe-8bfe197d87f9}" />
 	<object class="Timeline" id="{66479756-69e4-4442-8d8d-f4116f2ddfd1}">
 		<property name="isProxyEnabled">
@@ -95,39 +99,71 @@
 	<object class="MixerBusPanner" id="{77c4d0f3-77e0-4cb9-bc99-5fadbb3ff69d}" />
 	<object class="MixerBusEffectChain" id="{fed92966-137c-4550-991f-1fcd6e2d9462}">
 		<relationship name="effects">
-			<destination>{afb172d0-b8cd-40db-a08f-0ee19a6e2b89}</destination>
+			<destination>{61b66a61-1873-4df4-a9dd-d90417978a26}</destination>
+			<destination>{587bcba0-e705-49ca-a9cb-d5eabc92db37}</destination>
 			<destination>{1b527e83-d902-4fca-8052-2a3c7b1b5f4a}</destination>
 			<destination>{3a1b4559-9a39-43ef-86fc-eac39db7d7aa}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cd810dbb-2ebb-4a4f-ac13-bb1a282b8c5f}" />
 	<object class="SingleSound" id="{9735a9a6-437a-48ca-beac-9a7921982dc1}">
+		<relationship name="modulators">
+			<destination>{8142b8b3-af98-46b9-ba03-85c898b29348}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{f21f9487-6eba-4ae2-95db-1cd36f0b3c85}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{4f76a998-8fb9-4cc2-aa1d-1fe16292fcb9}" />
-	<object class="ThreeEQEffect" id="{afb172d0-b8cd-40db-a08f-0ee19a6e2b89}">
-		<property name="highGain">
-			<value>-5</value>
+	<object class="SFXReverbEffect" id="{61b66a61-1873-4df4-a9dd-d90417978a26}">
+		<property name="decayTime">
+			<value>2500</value>
 		</property>
-		<property name="highCrossover">
-			<value>7500</value>
+		<property name="lateDelay">
+			<value>24.5</value>
 		</property>
-		<property name="crossoverSlope">
-			<value>0</value>
+		<property name="HFDecayRatio">
+			<value>75.5</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-36</value>
+		</property>
+		<property name="highCut">
+			<value>20000</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>37</value>
+		</property>
+		<property name="wetLevel">
+			<value>-26</value>
+		</property>
+	</object>
+	<object class="ThreeEQEffect" id="{587bcba0-e705-49ca-a9cb-d5eabc92db37}">
+		<property name="lowGain">
+			<value>-1</value>
+		</property>
+		<property name="midGain">
+			<value>-0.5</value>
 		</property>
 	</object>
 	<object class="CompressorEffect" id="{1b527e83-d902-4fca-8052-2a3c7b1b5f4a}">
 		<property name="threshold">
-			<value>-35.5</value>
+			<value>-33</value>
 		</property>
 		<property name="attackTime">
 			<value>5.5999999</value>
 		</property>
 		<property name="gain">
-			<value>1</value>
+			<value>-1</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3a1b4559-9a39-43ef-86fc-eac39db7d7aa}" />
+	<object class="RandomizerModulator" id="{8142b8b3-af98-46b9-ba03-85c898b29348}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>4.5</value>
+		</property>
+	</object>
 </objects>

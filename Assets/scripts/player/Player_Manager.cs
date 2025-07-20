@@ -67,16 +67,16 @@ public class Player_Manager : MonoBehaviour
                 break;
             }
         }
-        // fallback if we couldn’t find it:
+        // fallback if we couldnï¿½t find it:
         if (deathLength <= 0f) deathLength = 1f;
 
         // 3) Wait out the animation + any extra delay
         yield return new WaitForSeconds(deathLength + respawnDelay);
 
-        // 4) Teleport the player’s transform
+        // 4) Teleport the playerï¿½s transform
         player.transform.position = respawnPoint.position;
 
-        // 5) Reset physics so they don’t immediately fall
+        // 5) Reset physics so they donï¿½t immediately fall
         var rb = player.GetComponent<Rigidbody2D>();
         if (rb != null)
         {

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using FMODUnity;
+using FMOD.Studio;
 
 public class moleMechanics : MonoBehaviour
 {
@@ -26,6 +28,11 @@ public class moleMechanics : MonoBehaviour
     private Rigidbody2D mole;
     private Animator moleAnim;
     private SpriteRenderer moleSpriteRenderer;
+
+    public StudioEventEmitter moleDig;
+    public StudioEventEmitter molePopUp;
+    public StudioEventEmitter molePopDown;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,7 +79,6 @@ public class moleMechanics : MonoBehaviour
             {
                 dustActive = true;
                 activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
-
                 Destroy(activeParticles.gameObject, activeParticles.main.duration);
             }
 
@@ -84,26 +90,34 @@ public class moleMechanics : MonoBehaviour
                 
                 moleAnim.SetBool("goingUp", true);
                 moleSpriteRenderer.enabled = true;
+
                 if (cooldown<0.3f) {
                     if (dustActive == false && moleDustParticles != null)
                     {
                         dustActive = true;
                         activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
-
                         Destroy(activeParticles.gameObject, activeParticles.main.duration);
                     }
                 }
                 if (cooldown<0) { 
                     cooldown = origCooldown;
                     dustActive=false;
+                    molePopDown.Play();
+                    moleDig.Play();
                 }
             }
         }
         if (cooldown>2.1f) {
-
             moleAnim.SetBool("goingUp", false);
             moleSpriteRenderer.enabled = false;
+        }
 
+        if (cooldown<1.9f) {
+            moleDig.Stop();
+        }
+
+        if (cooldown<1f) {
+            molePopUp.Play();
         }
 
         // timing

@@ -47,7 +47,6 @@ public class playerMovement : MonoBehaviour
     private bool canUmbre;
     public StudioEventEmitter umbrellaOpenGlide;
     public StudioEventEmitter umbrellaBlock;
-    public StudioEventEmitter umbrellaBlockRebound;
     public StudioEventEmitter umbrellaSheathe;
 
     
@@ -136,7 +135,6 @@ public class playerMovement : MonoBehaviour
     public void bounceUmbr()
     {
         rb.linearVelocity = new Vector2(0f,bounceUmbrPwr);
-        umbrellaBlockRebound.Play();
     }
    public void isGrounded()
     {

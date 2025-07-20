@@ -282,7 +282,7 @@
 	<object class="MixerBusFader" id="{d15c4c9e-9ee2-472c-bf1e-74b96f426241}" />
 	<object class="ThreeEQEffect" id="{abe6f79e-8592-4d32-91af-871fb4f302c9}">
 		<property name="highGain">
-			<value>-1</value>
+			<value>-2.5</value>
 		</property>
 	</object>
 	<object class="CompressorEffect" id="{dda9d8fd-3c6c-42a8-9896-fb2019e49a89}">

@@ -24,14 +24,16 @@ public class moleMechanics : MonoBehaviour
 
     public bool showRange = true;
     private Rigidbody2D mole;
-
+    private Animator moleAnim;
+    private SpriteRenderer moleSpriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mole = gameObject.GetComponent<Rigidbody2D>();
+        moleAnim = gameObject.GetComponent<Animator>();
+        moleSpriteRenderer= gameObject.GetComponent<SpriteRenderer>();
         player = Player_Manager.Instance.player.transform;
-        originalPosition = transform.position;
-        targetPosition = transform.position + new Vector3(0f, popUpHeight, 0f);
+        
     }
 
     private void OnDrawGizmos()
@@ -43,26 +45,67 @@ public class moleMechanics : MonoBehaviour
         }
     }
 
+   //private IEnumerator particleSpa()
+   // {   dustActive = true;
+   //     if (moleDustParticles != null)
+   //     {
+   //         activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
+
+   //         Destroy(activeParticles.gameObject, activeParticles.main.duration);
+            
+   //         yield return new WaitForSeconds(1);
+   //         activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
+
+   //         Destroy(activeParticles.gameObject, activeParticles.main.duration);
+           
+   //     }
+   //     yield return new WaitForSeconds(0.5f);
+   //     dustActive = false;
+   // }
+
     void Update()
     {
-        if ((Vector3.Distance(player.position, transform.position) <= moleRange) && popUpTime > 0 && cooldown == origCooldown)
-        {
-            if (!dustActive && moleDustParticles != null)
+        cooldown -= Time.deltaTime;
+        if (cooldown<3&& (Vector3.Distance(player.position, transform.position) <= moleRange)) {
+
+            if (dustActive==false&&moleDustParticles != null&&cooldown>2.6)
             {
-                activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
-                // activeParticles.Play();
-                Destroy(activeParticles.gameObject, activeParticles.main.duration);
                 dustActive = true;
+                activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
+
+                Destroy(activeParticles.gameObject, activeParticles.main.duration);
             }
-            popUpTime -= Time.deltaTime;
-            if (popUpTime < 2) 
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, popUpSpeed * Time.deltaTime);
+
+            if (cooldown<2.5) {
+                if (cooldown > 1)
+                {
+                    dustActive = false;
+                }
+                
+                moleAnim.SetBool("goingUp", true);
+                moleSpriteRenderer.enabled = true;
+                if (cooldown<0.3f) {
+                    if (dustActive == false && moleDustParticles != null)
+                    {
+                        dustActive = true;
+                        activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity);
+
+                        Destroy(activeParticles.gameObject, activeParticles.main.duration);
+                    }
+                }
+                if (cooldown<0) { 
+                    cooldown = origCooldown;
+                    dustActive=false;
+                }
+            }
         }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, originalPosition, popUpSpeed * Time.deltaTime);
-            dustActive = false;
+        if (cooldown>2.1f) {
+
+            moleAnim.SetBool("goingUp", false);
+            moleSpriteRenderer.enabled = false;
+
         }
+<<<<<<< Updated upstream
         // timing
         if (popUpTime < 0)
         {
@@ -76,4 +119,9 @@ public class moleMechanics : MonoBehaviour
         }
         
     }
+=======
+
+
+    }    
+>>>>>>> Stashed changes
 }

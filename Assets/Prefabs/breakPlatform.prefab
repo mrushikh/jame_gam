@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 189493095260154187}
   - component: {fileID: 1636120766893664586}
   - component: {fileID: 5425633834504689066}
+  - component: {fileID: 2331140173845079246}
   m_Layer: 3
   m_Name: breakPlatform
   m_TagString: ground
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375789993152095385}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.32, y: -0.52, z: 0}
   m_LocalScale: {x: 2, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
@@ -152,6 +153,7 @@ MonoBehaviour:
   origShakeTime: 0.5
   cooldown: 2
   origCooldown: 2
+  platformBreak: {fileID: 2331140173845079246}
 --- !u!50 &5425633834504689066
 Rigidbody2D:
   serializedVersion: 5
@@ -179,3 +181,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2331140173845079246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375789993152095385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 645991858
+      Data2: 1238104577
+      Data3: 399121059
+      Data4: -1804720460
+    Path: event:/SFX/PlatformBreak
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 20

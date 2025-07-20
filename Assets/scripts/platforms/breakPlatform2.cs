@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using FMODUnity;
+using FMOD.Studio;
 
 public class breakPlatform : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class breakPlatform : MonoBehaviour
     private Color platformColour;
 
     private Rigidbody2D rb;
+
+    public StudioEventEmitter platformBreak;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +44,7 @@ public class breakPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("spikes"))
         {
             reset = true;
+            platformBreak.Stop();
             Color tempColour = platformColour;
             tempColour.a = 0f; // make very invisible
             GetComponent<SpriteRenderer>().color = tempColour;
@@ -56,6 +61,7 @@ public class breakPlatform : MonoBehaviour
             {
                 transform.position = originalPosition + new Vector3(Random.Range(-shakeMagnitude, shakeMagnitude), Random.Range(-shakeMagnitude, shakeMagnitude), 0);
                 shakeTime -= Time.deltaTime;
+                if (!platformBreak.IsPlaying()) platformBreak.Play();
             }
             // drop the platform
             else

@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: -6626526117691701436}
   - component: {fileID: 5045158709288377532}
   - component: {fileID: 8125626056668053576}
+  - component: {fileID: 8106027423276625384}
+  - component: {fileID: 808863686092455018}
+  - component: {fileID: 6132884674320301926}
   m_Layer: 0
   m_Name: Mole 1
   m_TagString: Untagged
@@ -103,18 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adc85fd3c6954a5ba88bad97e234050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpHeight: 0.3
-  popUpSpeed: 5
   moleRange: 4.5
-  popUpTime: 3
-  origPopUpTime: 3
   origCooldown: 5
   cooldown: 5
   moleDustParticles: {fileID: 1229140866187447030, guid: f68a661705b8a48b782d8086560f16f3, type: 3}
   showRange: 1
-  moleDig: {fileID: 0}
-  molePopUp: {fileID: 0}
-  molePopDown: {fileID: 0}
+  moleDig: {fileID: 8106027423276625384}
+  molePopUp: {fileID: 808863686092455018}
+  molePopDown: {fileID: 6132884674320301926}
 --- !u!114 &-6626526117691701436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +194,96 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8106027423276625384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571993616897753676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1215369171
+      Data2: 1118577166
+      Data3: 1461893260
+      Data4: -1445498860
+    Path: event:/SFX/MoleDig
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &808863686092455018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571993616897753676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 970299207
+      Data2: 1293196629
+      Data3: -1174560074
+      Data4: -1502793869
+    Path: event:/SFX/MolePopUp
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 20
+--- !u!114 &6132884674320301926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571993616897753676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -150584228
+      Data2: 1123689548
+      Data3: -491032185
+      Data4: -1791488210
+    Path: event:/SFX/MolePopDown
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 20

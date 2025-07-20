@@ -17,7 +17,8 @@ public class moleMechanics : MonoBehaviour
     [SerializeField] private float origCooldown = 2f;
     [SerializeField] private float cooldown = 2f;
 
-    public GameObject moleDustParticles;
+    [SerializeField] public ParticleSystem moleDustParticles;
+    private ParticleSystem activeParticles;
     private bool dustActive = false;
 
     public bool showRange = true;
@@ -41,20 +42,15 @@ public class moleMechanics : MonoBehaviour
         }
     }
 
-    // void DropStick()
-    // {
-    //     Instantiate(stick, transform.position, Quaternion.identity);
-    //     stickDropped = true;
-    // }
-
-    // Update is called once per frame
     void Update()
     {
         if ((Vector3.Distance(player.position, transform.position) <= moleRange) && popUpTime > 0 && cooldown == origCooldown)
         {
-            if (!dustActive)
+            if (!dustActive && moleDustParticles != null)
             {
-                Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
+                activeParticles = Instantiate(moleDustParticles, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
+                // activeParticles.Play();
+                Destroy(activeParticles.gameObject, activeParticles.main.duration);
                 dustActive = true;
             }
             popUpTime -= Time.deltaTime;

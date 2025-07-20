@@ -13,8 +13,10 @@ public class breakPlatform : MonoBehaviour
     [SerializeField] private float origShakeTime = 0.5f;
     private float shakeMagnitude = 0.05f;
     private bool platformActive = false;
-    private float cooldown = 5f;
+    [SerializeField] private float cooldown = 2f;
+    [SerializeField] private float origCooldown = 2f;
     private bool reset = false;
+    private Color platformColour;
 
     private Rigidbody2D rb;
 
@@ -23,9 +25,10 @@ public class breakPlatform : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.freezeRotation = true;
         player = Player_Manager.Instance.player.transform;
         originalPosition = transform.position;
-        Instantiate(rb, originalPosition, Quaternion.identity);
+        platformColour = GetComponent<SpriteRenderer>().color;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,12 +36,14 @@ public class breakPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !platformActive)
         {
             platformActive = true;
-            Debug.Log("KFJSDLKFJKLDSJFKLDS");
         }
         if (collision.gameObject.CompareTag("ground"))
         {
-            Destroy(gameObject);    // destroys on any collision
             reset = true;
+            Color tempColour = platformColour;
+            tempColour.a = 0f; // make invisible
+            GetComponent<SpriteRenderer>().color = tempColour;
+            GetComponent<Collider2D>().isTrigger = true;
         }
     }
 
@@ -60,16 +65,20 @@ public class breakPlatform : MonoBehaviour
             }
         }
         if (reset)
-        {
             cooldown -= Time.deltaTime;
-            if (cooldown < 0)
-            {
-                cooldown = 5f;
-                platformActive = false;
-                shakeTime = origShakeTime;
-                Instantiate(rb, originalPosition, Quaternion.identity);
-                reset = false;
-            }
+        
+        if (cooldown < 0f)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            GetComponent<SpriteRenderer>().color = platformColour;
+            GetComponent<Collider2D>().isTrigger = false;
+            transform.position = originalPosition;
+
+            cooldown = origCooldown;
+            platformActive = false;
+            reset = false;
+            shakeTime = origShakeTime;
         }
     }
 }

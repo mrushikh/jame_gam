@@ -41,7 +41,7 @@ public class breakPlatform : MonoBehaviour
         {
             reset = true;
             Color tempColour = platformColour;
-            tempColour.a = 0f; // make invisible
+            tempColour.a = 0f; // make very invisible
             GetComponent<SpriteRenderer>().color = tempColour;
             GetComponent<Collider2D>().isTrigger = true;
         }

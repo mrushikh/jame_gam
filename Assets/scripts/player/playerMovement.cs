@@ -5,6 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour
 {   //movement
@@ -31,7 +32,8 @@ public class playerMovement : MonoBehaviour
     public float dashingPower = 10f;
     public float vertDashingPower = 10f;
     private float dashingTime = 0.1f;
-    public float dashCooldown;
+    [SerializeField] private float dashCooldown;
+    private float dashCooldownTime;
     public StudioEventEmitter playerDash;
    
 
@@ -40,7 +42,8 @@ public class playerMovement : MonoBehaviour
     public GameObject umbrella;
     public float bounceUmbrPwr;
     public bool downUmbr;
-    [SerializeField] private float umbrellaCooldown = 1.5f;
+    [SerializeField] private float umbrellaCooldown;
+    private float umbrellaCooldownTime;
     private bool canUmbre;
     public StudioEventEmitter umbrellaOpenGlide;
     public StudioEventEmitter umbrellaBlock;
@@ -48,7 +51,9 @@ public class playerMovement : MonoBehaviour
     public StudioEventEmitter umbrellaSheathe;
 
     
-
+    //cooldownImg
+    public Image dashImg;
+    public Image umbrImg;
     private Animator player_Anim;
 
     void Start()
@@ -70,7 +75,7 @@ public class playerMovement : MonoBehaviour
     
     private IEnumerator umbrellaDir()
     {
-        umbrellaCooldown = 2f;
+        umbrellaCooldownTime = umbrellaCooldown;
         rb.gravityScale = 2f;
         if (!leftfacing)
         {
@@ -105,7 +110,7 @@ public class playerMovement : MonoBehaviour
     
     public IEnumerator Dash(string dir)
     {
-        
+        dashCooldownTime = dashCooldown;
         canDash = false;
         isDashing = true;
         float originalGravity = 2f;
@@ -123,8 +128,7 @@ public class playerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing=false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+       
 
 
 
@@ -161,18 +165,33 @@ public class playerMovement : MonoBehaviour
 
         
         //umbrella cooldown
-        if (umbrellaCooldown > 0)
+        if (umbrellaCooldownTime > 0)
         {
-            umbrellaCooldown -= Time.deltaTime;
+            umbrellaCooldownTime -= Time.deltaTime;
+            umbrImg.fillAmount = (umbrellaCooldown-umbrellaCooldownTime)/umbrellaCooldown;
+
             canUmbre = false;
         }
         else
-        {   
+        {
+            umbrImg.fillAmount =1;
             canUmbre = true;
+        }
+        //dashCooldown
+        if (dashCooldownTime > 0)
+        {
+            dashCooldownTime -= Time.deltaTime;
+            dashImg.fillAmount = (dashCooldown - dashCooldownTime) / dashCooldown;
+            canDash = false;
+        }
+        else
+        {
+            dashImg.fillAmount = 1;
+            canDash = true;
         }
         //groundCheck
         isGrounded();
-
+        Debug.Log(dashCooldown);
         if (isDashing)
         {
             

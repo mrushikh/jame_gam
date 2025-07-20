@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 621243719433795015}
   - component: {fileID: 1947823758297462655}
   - component: {fileID: 3369621118853853599}
-  - component: {fileID: 2546868007196989678}
+  - component: {fileID: 5036538961688883831}
+  - component: {fileID: 7127639779748578279}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.78, y: 3.36, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.6773951, b: 0.3915094, a: 1}
+  m_Sprite: {fileID: -2538095325823202906, guid: dda3159c1be72cc45978518ec680ef75, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,10 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d01bdcf14ba4ac6afc705c6309f4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  ground: {fileID: 0}
   stick: {fileID: 6767188320733273913, guid: d9eae418ecdc94ab0b26c4e9b907f996, type: 3}
   abovePlayerOffset: {x: 0, y: 0, z: 0}
+  birdSpeed: 4
+  birdRange: 6
+  birdFollowTime: 6
+  birdCooldown: 4
+  showRange: 0
 --- !u!50 &3369621118853853599
 Rigidbody2D:
   serializedVersion: 5
@@ -133,8 +137,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2546868007196989678
-BoxCollider2D:
+--- !u!60 &5036538961688883831
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,11 +175,122 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.7203562, y: 2.85}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.45472756, y: -0.6995643}
+      - {x: 0.45472756, y: -0.6304146}
+      - {x: 0.54692715, y: -0.6419395}
+      - {x: 0.9042005, y: -0.6649894}
+      - {x: 0.97335017, y: -0.6649894}
+      - {x: 1.01945, y: -0.6304146}
+      - {x: 1.007925, y: -0.5036402}
+      - {x: 0.97335017, y: -0.49211523}
+      - {x: 0.7198013, y: -0.48059028}
+      - {x: 0.4893024, y: -0.43449047}
+      - {x: 0.5354022, y: -0.35381585}
+      - {x: 0.7198013, y: -0.13484184}
+      - {x: 0.76590115, y: -0.18094164}
+      - {x: 0.8811506, y: -0.19246659}
+      - {x: 0.91572547, y: -0.1694167}
+      - {x: 0.98487514, y: -0.07721711}
+      - {x: 1.007925, y: 0.03803236}
+      - {x: 1.0424999, y: 0.118706994}
+      - {x: 1.1577493, y: 0.13023195}
+      - {x: 1.238424, y: 0.23395647}
+      - {x: 1.238424, y: 0.46445543}
+      - {x: 1.1807992, y: 0.5336051}
+      - {x: 1.2499489, y: 0.56817997}
+      - {x: 1.2960488, y: 0.62580466}
+      - {x: 1.3536735, y: 0.7295292}
+      - {x: 1.3651984, y: 0.81020385}
+      - {x: 1.3651984, y: 1.2366269}
+      - {x: 1.3306235, y: 1.3979762}
+      - {x: 1.2845237, y: 1.421026}
+      - {x: 1.238424, y: 1.421026}
+      - {x: 1.1577493, y: 1.3288264}
+      - {x: 0.8811506, y: 0.9024034}
+      - {x: 0.6737015, y: 0.61427975}
+      - {x: 0.4201527, y: 0.37225583}
+      - {x: 0.40862775, y: 0.47598037}
+      - {x: 0.3971028, y: 0.6027548}
+      - {x: 0.2933783, y: 0.7525791}
+      - {x: 0.13202903, y: 0.89087844}
+      - {x: 0.0052545993, y: 0.98307806}
+      - {x: -0.029320242, y: 0.994603}
+      - {x: -0.32896888, y: 0.67190444}
+      - {x: -0.44421834, y: 0.49903026}
+      - {x: -0.4326934, y: 0.40683067}
+      - {x: -0.5364179, y: 0.48750532}
+      - {x: -0.7669169, y: 0.76410407}
+      - {x: -0.95131606, y: 1.0407028}
+      - {x: -1.1472402, y: 1.3288264}
+      - {x: -1.2163898, y: 1.421026}
+      - {x: -1.2509646, y: 1.421026}
+      - {x: -1.2970644, y: 1.3979762}
+      - {x: -1.3431642, y: 1.2366269}
+      - {x: -1.3431642, y: 0.7986789}
+      - {x: -1.3201144, y: 0.69495434}
+      - {x: -1.2279148, y: 0.56817997}
+      - {x: -1.2048649, y: 0.46445543}
+      - {x: -1.2163898, y: 0.25700635}
+      - {x: -1.1587651, y: 0.15328184}
+      - {x: -1.1011404, y: 0.13023195}
+      - {x: -0.97436595, y: 0.10718205}
+      - {x: -0.962841, y: -0.07721711}
+      - {x: -0.9282661, y: -0.13484184}
+      - {x: -0.85911644, y: -0.20399153}
+      - {x: -0.6747173, y: -0.18094164}
+      - {x: -0.64014244, y: -0.22704142}
+      - {x: -0.5364179, y: -0.28466615}
+      - {x: -0.4787932, y: -0.3653408}
+      - {x: -0.42116845, y: -0.39991564}
+      - {x: -0.7669169, y: -0.39991564}
+      - {x: -0.9282661, y: -0.3653408}
+      - {x: -0.97436595, y: -0.37686574}
+      - {x: -0.9167412, y: -0.52669007}
+      - {x: -0.81301665, y: -0.54973996}
+      - {x: -0.5479429, y: -0.54973996}
+      - {x: -0.4787932, y: -0.57278985}
+      - {x: -0.6862422, y: -0.6880393}
+      - {x: -0.6516674, y: -0.7802389}
+      - {x: -0.4096435, y: -0.72261417}
+      - {x: -0.31744394, y: -0.6534645}
+      - {x: -0.4096435, y: -0.8724385}
+      - {x: -0.22524434, y: -1.0453126}
+      - {x: -0.22524434, y: -1.0798875}
+      - {x: -0.20219445, y: -1.1029375}
+      - {x: 0.03982944, y: -1.0914124}
+      - {x: 0.28185335, y: -1.1490372}
+      - {x: 0.32795313, y: -1.1490372}
+      - {x: 0.35100302, y: -1.1375123}
+      - {x: 0.35100302, y: -0.9992129}
+      - {x: 0.5238772, y: -0.9300632}
+  m_UseDelaunayMesh: 0
+--- !u!95 &7127639779748578279
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708495607643035253}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 717f0dc69e3b4364ea04ae2661634e6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

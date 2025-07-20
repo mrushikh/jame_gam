@@ -27,6 +27,7 @@ public class birdMechanics : MonoBehaviour
         bird = gameObject.GetComponent<Rigidbody2D>();
         abovePlayerOffset = new Vector3(0, 4, 0);
         player = Player_Manager.Instance.player.transform;
+        
     }
 
     private void OnDrawGizmos()
@@ -43,15 +44,26 @@ public class birdMechanics : MonoBehaviour
         Instantiate(stick, transform.position, Quaternion.identity);
         stickDropped = true;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        if (playerInBounds)
+        {
+            SpriteRenderer spriteBird = gameObject.GetComponent<SpriteRenderer>();
+            spriteBird.enabled = true;
+        }
+        else {
+            SpriteRenderer spriteBird = gameObject.GetComponent<SpriteRenderer>();
+            spriteBird.enabled = false;
+        }
+
         if (Vector3.Distance(player.position, transform.position) <= birdRange)
             playerInBounds = true;
 
         if (playerInBounds)
-        {
+        {   
+            
             counter -= Time.deltaTime;
             if (counter > 0)
             {

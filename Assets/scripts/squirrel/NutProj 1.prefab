@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4667276529633026835}
   - component: {fileID: 651224086557229143}
   m_Layer: 0
-  m_Name: NutProj
+  m_Name: NutProj 1
   m_TagString: stick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.19, y: -3.26, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2234377755627393004, guid: dda3159c1be72cc45978518ec680ef75, type: 3}
+  m_Sprite: {fileID: -4851182505641312803, guid: dda3159c1be72cc45978518ec680ef75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,4 +165,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11cbe8c31228514468d24698fbab5925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4921585338231295533, guid: b4c827a8406887e43a0ed1abba5b3a87, type: 3}

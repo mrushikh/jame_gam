@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.86, y: 0.26, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,13 +79,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1744440462659426223, guid: dda3159c1be72cc45978518ec680ef75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.031909, y: 1.65625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -107,10 +107,14 @@ MonoBehaviour:
   popUpSpeed: 5
   moleRange: 4.5
   popUpTime: 3
-  origCooldown: 2
-  cooldown: 2
+  origPopUpTime: 3
+  origCooldown: 5
+  cooldown: 5
   moleDustParticles: {fileID: 1229140866187447030, guid: f68a661705b8a48b782d8086560f16f3, type: 3}
   showRange: 1
+  moleDig: {fileID: 0}
+  molePopUp: {fileID: 0}
+  molePopDown: {fileID: 0}
 --- !u!114 &-6626526117691701436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +187,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2204218, y: 1.06}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 5.031909, y: 1.65625}
+    newSize: {x: 5.031909, y: 1.65625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

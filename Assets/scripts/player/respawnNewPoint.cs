@@ -7,7 +7,7 @@ public class respawnNewPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            respawnPoint.transform.position=gameObject.transform.position;   
+            Player_Manager.Instance.respawnPoint = respawnPoint.transform;
         }
     }
 }

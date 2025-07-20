@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 140846109}
   m_Layer: 0
   m_Name: Level_3_Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1384,7 +1384,7 @@ GameObject:
   - component: {fileID: 212179136}
   m_Layer: 0
   m_Name: Level_1_Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 263282386}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4415,7 +4415,7 @@ GameObject:
   - component: {fileID: 400938672}
   m_Layer: 0
   m_Name: Level_2_Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4963,7 +4963,7 @@ GameObject:
   - component: {fileID: 506268960}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8252,7 +8252,7 @@ GameObject:
   - component: {fileID: 835475324}
   m_Layer: 0
   m_Name: Level_2_Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9430,7 +9430,7 @@ GameObject:
   - component: {fileID: 1240135434}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12944,7 +12944,7 @@ GameObject:
   - component: {fileID: 1384431671}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16588,7 +16588,7 @@ GameObject:
   - component: {fileID: 1545090744}
   m_Layer: 3
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20938,7 +20938,7 @@ GameObject:
   - component: {fileID: 1832842882}
   m_Layer: 0
   m_Name: Level_2_Tilemap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

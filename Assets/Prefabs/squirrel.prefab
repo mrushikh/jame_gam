@@ -102,3 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nutProj: {fileID: 5382524099636462818, guid: 16d19f84f4ec3b640a75a49bd31d55b3, type: 3}
   cooldown: 5
+  Range: 6
+  showRange: 0
+  playerInBound: 0

@@ -7,6 +7,9 @@ public class throwNut : MonoBehaviour
     private float cooldownTime;
     private Transform player;
     private float dis;
+    [SerializeField] private float Range = 6f;
+    public bool showRange = false;
+    public bool playerInBound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,11 +17,28 @@ public class throwNut : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
+    private void OnDrawGizmos()
+    {
+        if (showRange)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(this.transform.position, Range);
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null){
+        if (Vector3.Distance(player.position, transform.position) <= Range)
+        {
+            playerInBound = true;
+        }
+        else { 
+            playerInBound=false;
+        }
+
+        if (player != null)
+        {
             float intialPos = transform.position.x;
             float finalPos = player.transform.position.x;
             dis = Mathf.Abs(finalPos - intialPos);
@@ -29,7 +49,7 @@ public class throwNut : MonoBehaviour
         {
             cooldownTime -= Time.deltaTime;
         }
-        else { 
+        else if(playerInBound) { 
             cooldownTime = cooldown;
             if (dis<10) {
                 Instantiate(nutProj, transform.position, Quaternion.identity);

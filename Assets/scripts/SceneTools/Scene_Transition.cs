@@ -28,7 +28,7 @@ public class Scene_Transition : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            m_CineCam.Priority--;
+            m_CineCam.Priority = 0;
         }
     }
 

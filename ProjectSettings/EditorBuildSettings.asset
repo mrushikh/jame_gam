@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/metal level.unity
     guid: 68c39765fb246c241b98670453302900
+  - enabled: 1
+    path: Assets/Scenes/end.unity
+    guid: 5092892b43f7b3b41b68cbdeb09b1902
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

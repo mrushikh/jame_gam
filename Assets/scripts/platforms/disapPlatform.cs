@@ -26,7 +26,7 @@ public class disapPlatform : MonoBehaviour
         platformColour = GetComponent<SpriteRenderer>().color;
     }
 
-    void Update()
+    void OnCollisionEnter2D()
     {
         if (platActive)
         {

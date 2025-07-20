@@ -92,7 +92,13 @@ public class Player_Manager : MonoBehaviour
     }
 
 
-
+    private void Update()
+    {
+        if (isRespawning) {
+            var rb = player.GetComponent<Rigidbody2D>();
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
 
 
 

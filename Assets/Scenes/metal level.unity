@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 51175819}
   - component: {fileID: 51175818}
   - component: {fileID: 51175817}
+  - component: {fileID: 51175820}
   m_Layer: 0
   m_Name: Level_1_CineCam
   m_TagString: Untagged
@@ -509,6 +510,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &51175820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51175815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad8996c516f9644b3e68073928713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &81114108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300289471444258767, guid: 4bab8498b39602c44a954d3317ff3e1b, type: 3}
@@ -7365,6 +7378,7 @@ GameObject:
   - component: {fileID: 602700990}
   - component: {fileID: 602700989}
   - component: {fileID: 602700988}
+  - component: {fileID: 602700991}
   m_Layer: 0
   m_Name: Level_2_CineCam
   m_TagString: Untagged
@@ -7469,6 +7483,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &602700991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602700986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad8996c516f9644b3e68073928713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &606396843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8293,6 +8319,7 @@ GameObject:
   - component: {fileID: 852258627}
   - component: {fileID: 852258626}
   - component: {fileID: 852258625}
+  - component: {fileID: 852258628}
   m_Layer: 0
   m_Name: Level_2_CineCam
   m_TagString: Untagged
@@ -8397,6 +8424,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &852258628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852258623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad8996c516f9644b3e68073928713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865780037
 GameObject:
   m_ObjectHideFlags: 0
@@ -9306,6 +9345,7 @@ GameObject:
   - component: {fileID: 1235130538}
   - component: {fileID: 1235130537}
   - component: {fileID: 1235130536}
+  - component: {fileID: 1235130539}
   m_Layer: 0
   m_Name: Level_2_CineCam
   m_TagString: Untagged
@@ -9410,6 +9450,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &1235130539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235130534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad8996c516f9644b3e68073928713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1240135429
 GameObject:
   m_ObjectHideFlags: 0
@@ -21782,6 +21834,7 @@ GameObject:
   - component: {fileID: 2001007832}
   - component: {fileID: 2001007831}
   - component: {fileID: 2001007830}
+  - component: {fileID: 2001007833}
   m_Layer: 0
   m_Name: Level_3_CineCam
   m_TagString: Untagged
@@ -21886,6 +21939,18 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &2001007833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001007828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad8996c516f9644b3e68073928713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2022557273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4300289471444258767, guid: 4bab8498b39602c44a954d3317ff3e1b, type: 3}

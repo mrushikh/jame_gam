@@ -37,7 +37,7 @@ public class breakPlatform : MonoBehaviour
         {
             platformActive = true;
         }
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("spikes"))
         {
             reset = true;
             Color tempColour = platformColour;

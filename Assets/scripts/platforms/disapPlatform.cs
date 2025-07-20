@@ -25,8 +25,7 @@ public class disapPlatform : MonoBehaviour
         player = Player_Manager.Instance.player.transform;
         platformColour = GetComponent<SpriteRenderer>().color;
     }
-
-    void OnCollisionEnter2D()
+    private void Update()
     {
         if (platActive)
         {
@@ -59,3 +58,4 @@ public class disapPlatform : MonoBehaviour
         }
     }
 }
+    

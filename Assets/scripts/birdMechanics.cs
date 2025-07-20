@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using FMODUnity;
+using FMOD.Studio;
 
 public class birdMechanics : MonoBehaviour
 {
@@ -21,13 +23,18 @@ public class birdMechanics : MonoBehaviour
     private bool stickDropped = false;
     private float counter = 6f; // how long the bird should follow the player
 
+    // audio
+
+    public StudioEventEmitter birdWings;
+    public StudioEventEmitter birdScream;
+    public StudioEventEmitter birdDropBranch;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         bird = gameObject.GetComponent<Rigidbody2D>();
         abovePlayerOffset = new Vector3(0, 4, 0);
         player = Player_Manager.Instance.player.transform;
-        
     }
 
     private void OnDrawGizmos()
@@ -43,6 +50,7 @@ public class birdMechanics : MonoBehaviour
     {
         Instantiate(stick, transform.position, Quaternion.identity);
         stickDropped = true;
+        birdDropBranch.Play();
     }
     
     // Update is called once per frame
@@ -52,10 +60,14 @@ public class birdMechanics : MonoBehaviour
         {
             SpriteRenderer spriteBird = gameObject.GetComponent<SpriteRenderer>();
             spriteBird.enabled = true;
+            
+            if (!birdWings.IsPlaying()) birdWings.Play();
+            if (!birdScream.IsPlaying()) birdScream.Play();
         }
         else {
             SpriteRenderer spriteBird = gameObject.GetComponent<SpriteRenderer>();
             spriteBird.enabled = false;
+            birdWings.Stop();
         }
 
         if (Vector3.Distance(player.position, transform.position) <= birdRange)
@@ -63,7 +75,6 @@ public class birdMechanics : MonoBehaviour
 
         if (playerInBounds)
         {   
-            
             counter -= Time.deltaTime;
             if (counter > 0)
             {
@@ -81,6 +92,8 @@ public class birdMechanics : MonoBehaviour
             {
                 // reset bird mechanics
                 playerInBounds = false;
+                birdWings.Stop();
+                birdScream.Stop();
                 stickDropped = false;
                 counter = birdFollowTime;
                 birdCooldown = 4f;

@@ -100,8 +100,8 @@ public class moleMechanics : MonoBehaviour
                 if (cooldown<0) { 
                     cooldown = origCooldown;
                     dustActive=false;
-                    molePopDown.Play();
-                    moleDig.Play();
+                    if (!molePopDown.IsPlaying()) molePopDown.Play();
+                    if (!moleDig.IsPlaying()) moleDig.Play();
                 }
             }
         }
@@ -111,11 +111,11 @@ public class moleMechanics : MonoBehaviour
         }
 
         if (cooldown<1.9f) {
-            moleDig.Stop();
+           if (moleDig.IsPlaying()) moleDig.Stop();
         }
 
         if (cooldown<1f) {
-            molePopUp.Play();
+            if (!molePopUp.IsPlaying()) molePopUp.Play();
         }
 
        

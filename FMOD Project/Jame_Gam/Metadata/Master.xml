@@ -21,7 +21,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{4910b9c9-671b-4c61-9b7a-45fc736b51e2}">
 		<property name="overridingOutputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{8ab07587-eba2-46d0-87f9-81f9d9bd1894}" />

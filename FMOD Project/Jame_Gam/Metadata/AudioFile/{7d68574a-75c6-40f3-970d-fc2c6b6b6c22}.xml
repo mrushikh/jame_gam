@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7d68574a-75c6-40f3-970d-fc2c6b6b6c22}">
+		<property name="assetPath">
+			<value>BirdWings.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>5.1246666666666663</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d391c567-402f-4985-9078-b2f9a0a2ab50}</destination>
+		</relationship>
+	</object>
+</objects>

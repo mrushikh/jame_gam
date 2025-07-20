@@ -1,4 +1,6 @@
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class throwNut : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class throwNut : MonoBehaviour
     public bool showRange = false;
     public bool playerInBound;
     private Animator animatorSq;
+
+    public StudioEventEmitter squirrelScream;
+    public StudioEventEmitter squirrelThrowNut;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,9 +55,17 @@ public class throwNut : MonoBehaviour
         if (cooldownTime > 0)
         {
             cooldownTime -= Time.deltaTime;
+
+            if (cooldownTime < 1.4f && cooldownTime > 1.3f) {
+                squirrelScream.Play();
+            }
+
             if (cooldownTime < 0.8f&&animatorSq.GetBool("throwing")==false) {
                 animatorSq.SetBool("throwing", true);
-            
+            }
+
+            if (cooldownTime < 0.1f) {
+                squirrelThrowNut.Play();
             }
         }   
         else if(playerInBound) { 

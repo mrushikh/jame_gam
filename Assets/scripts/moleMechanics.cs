@@ -12,13 +12,11 @@ public class moleMechanics : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 originalPosition;
 
-    [SerializeField] private float popUpHeight = 0.3f;
-    [SerializeField] private float popUpSpeed = 5f;
+    
     [SerializeField] private float moleRange = 4.5f; // how far the player is before mole pops up
-    [SerializeField] private float popUpTime = 3f;
-    [SerializeField] private float origPopUpTime = 3f;
-    [SerializeField] private float origCooldown = 2f;
-    [SerializeField] private float cooldown = 2f;
+
+    [SerializeField] private float origCooldown = 5f;
+    [SerializeField] private float cooldown = 5f;
 
     [SerializeField] public ParticleSystem moleDustParticles;
     private ParticleSystem activeParticles;
@@ -120,17 +118,7 @@ public class moleMechanics : MonoBehaviour
             molePopUp.Play();
         }
 
-        // timing
-        if (popUpTime < 0)
-        {
-            cooldown -= Time.deltaTime;
-        }
-        if (cooldown < 0)
-        {
-            // reset popup and cooldown time
-            cooldown = origCooldown;
-            popUpTime = origPopUpTime;
-        }
+       
         
     }
 

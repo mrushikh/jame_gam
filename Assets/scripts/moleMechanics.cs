@@ -108,6 +108,7 @@ public class moleMechanics : MonoBehaviour
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // timing
         if (popUpTime < 0)
         {
@@ -121,6 +122,11 @@ public class moleMechanics : MonoBehaviour
         }
         
     }
+=======
+
+
+    }    
+>>>>>>> Stashed changes
 =======
 
 

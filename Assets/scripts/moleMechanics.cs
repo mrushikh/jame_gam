@@ -14,6 +14,7 @@ public class moleMechanics : MonoBehaviour
     [SerializeField] private float popUpSpeed = 5f;
     [SerializeField] private float moleRange = 4.5f; // how far the player is before mole pops up
     [SerializeField] private float popUpTime = 3f;
+    [SerializeField] private float origPopUpTime = 3f;
     [SerializeField] private float origCooldown = 2f;
     [SerializeField] private float cooldown = 2f;
 
@@ -71,7 +72,7 @@ public class moleMechanics : MonoBehaviour
         {
             // reset popup and cooldown time
             cooldown = origCooldown;
-            popUpTime = 3f;
+            popUpTime = origPopUpTime;
         }
         
     }

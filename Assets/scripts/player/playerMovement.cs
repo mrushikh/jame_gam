@@ -191,7 +191,7 @@ public class playerMovement : MonoBehaviour
         }
         //groundCheck
         isGrounded();
-        Debug.Log(dashCooldown);
+        
         if (isDashing)
         {
             

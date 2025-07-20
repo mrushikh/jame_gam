@@ -14,6 +14,11 @@ public class nut_PRoj : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
+    private IEnumerator destroyNut1()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }
     void Start()
     {
         StartCoroutine(destroyNut());
@@ -49,6 +54,7 @@ public class nut_PRoj : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Player_Manager.Instance.RespawnPlayer();
+            StartCoroutine(destroyNut1());
         }
     }
 }

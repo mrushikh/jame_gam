@@ -10,12 +10,13 @@ public class throwNut : MonoBehaviour
     [SerializeField] private float Range = 6f;
     public bool showRange = false;
     public bool playerInBound;
+    private Animator animatorSq;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cooldownTime = cooldown;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
+        animatorSq = GetComponent<Animator>();
     }
     private void OnDrawGizmos()
     {
@@ -48,13 +49,17 @@ public class throwNut : MonoBehaviour
         if (cooldownTime > 0)
         {
             cooldownTime -= Time.deltaTime;
-        }
+            if (cooldownTime < 0.8f&&animatorSq.GetBool("throwing")==false) {
+                animatorSq.SetBool("throwing", true);
+            
+            }
+        }   
         else if(playerInBound) { 
             cooldownTime = cooldown;
-            if (dis<10) {
-                Instantiate(nutProj, transform.position, Quaternion.identity);
+            animatorSq.SetBool("throwing", false);
+            Instantiate(nutProj, transform.position, Quaternion.identity);
 
-            }
+            
 
         }
     }

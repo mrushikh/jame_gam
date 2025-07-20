@@ -10,6 +10,7 @@ TagManager:
   - stick
   - nut
   - slipPlatform
+  - playerPos
   layers:
   - Default
   - TransparentFX

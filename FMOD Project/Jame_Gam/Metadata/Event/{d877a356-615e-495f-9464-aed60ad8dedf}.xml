@@ -95,7 +95,11 @@
 			<destination>{e7e47a25-4284-4a27-95be-ce7608c6ca96}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{4d71a1d2-63f4-4a3d-b923-8490d34aad68}" />
+	<object class="MultiSound" id="{4d71a1d2-63f4-4a3d-b923-8490d34aad68}">
+		<relationship name="sounds">
+			<destination>{e48a367b-f93c-46d5-b9d7-068837331aab}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{20e4ae8b-34aa-4da0-9e94-1b9fa5290826}">
 		<relationship name="effects">
 			<destination>{eeb7865c-983b-4a88-a1ea-9af93fa948e0}</destination>
@@ -113,6 +117,11 @@
 		<property name="overridingOutputFormat">
 			<value>1</value>
 		</property>
+	</object>
+	<object class="SingleSound" id="{e48a367b-f93c-46d5-b9d7-068837331aab}">
+		<relationship name="audioFile">
+			<destination>{39af6082-c1d0-442d-b0ff-0fe48e9d60c1}</destination>
+		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{eeb7865c-983b-4a88-a1ea-9af93fa948e0}" />
 	<object class="ThreeEQEffect" id="{5aba110c-8f9c-407d-b7e3-439139b8ccb8}" />

@@ -105,10 +105,7 @@ public class moleMechanics : MonoBehaviour
             moleSpriteRenderer.enabled = false;
 
         }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         // timing
         if (popUpTime < 0)
         {
@@ -122,24 +119,5 @@ public class moleMechanics : MonoBehaviour
         }
         
     }
-=======
 
-
-    }    
->>>>>>> Stashed changes
-=======
-
-
-    }    
->>>>>>> Stashed changes
-=======
-
-
-    }    
->>>>>>> Stashed changes
-=======
-
-
-    }    
->>>>>>> Stashed changes
 }

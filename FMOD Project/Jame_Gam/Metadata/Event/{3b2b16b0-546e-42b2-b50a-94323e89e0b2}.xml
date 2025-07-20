@@ -115,13 +115,19 @@
 		<property name="lowGain">
 			<value>-5.5</value>
 		</property>
+		<property name="midGain">
+			<value>-4.5</value>
+		</property>
 		<property name="highGain">
-			<value>-1</value>
+			<value>-0.5</value>
 		</property>
 	</object>
 	<object class="CompressorEffect" id="{f93316de-4130-4a6d-a2a4-cd729731cacd}">
 		<property name="threshold">
-			<value>-37.5</value>
+			<value>-41.5</value>
+		</property>
+		<property name="gain">
+			<value>-4</value>
 		</property>
 	</object>
 </objects>

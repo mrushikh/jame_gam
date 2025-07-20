@@ -111,9 +111,9 @@ MonoBehaviour:
   cooldown: 5
   moleDustParticles: {fileID: 1229140866187447030, guid: f68a661705b8a48b782d8086560f16f3, type: 3}
   showRange: 1
-  moleDig: {fileID: 0}
-  molePopUp: {fileID: 0}
-  molePopDown: {fileID: 0}
+  moleDig: {fileID: 5928330344543583762}
+  molePopUp: {fileID: 3327037551191694240}
+  molePopDown: {fileID: 9104140367069107802}
 --- !u!114 &-6626526117691701436
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -113,9 +113,9 @@ MonoBehaviour:
   birdFollowTime: 6
   birdCooldown: 4
   showRange: 0
-  birdWings: {fileID: 0}
-  birdScream: {fileID: 0}
-  birdDropBranch: {fileID: 0}
+  birdWings: {fileID: 6396223188586171479}
+  birdScream: {fileID: 6147004693149160384}
+  birdDropBranch: {fileID: 3416283443088838417}
 --- !u!50 &3369621118853853599
 Rigidbody2D:
   serializedVersion: 5

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4370604037334489162}
   - component: {fileID: 2559735933688023716}
   - component: {fileID: 8999412652548838443}
-  - component: {fileID: 3635769514294384910}
-  - component: {fileID: 6487650634616714395}
+  - component: {fileID: 4879070032096733871}
+  - component: {fileID: 7093060888807900797}
   m_Layer: 0
   m_Name: squirrel
   m_TagString: Untagged
@@ -108,8 +108,8 @@ MonoBehaviour:
   Range: 6
   showRange: 1
   playerInBound: 0
-  squirrelScream: {fileID: 0}
-  squirrelThrowNut: {fileID: 0}
+  squirrelScream: {fileID: 4879070032096733871}
+  squirrelThrowNut: {fileID: 7093060888807900797}
 --- !u!95 &8999412652548838443
 Animator:
   serializedVersion: 7
@@ -132,7 +132,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3635769514294384910
+--- !u!114 &4879070032096733871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,11 +147,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 869232606
+      Data2: 1233615266
+      Data3: -562046328
+      Data4: -1557549501
+    Path: event:/SFX/SquirrelScream
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -161,9 +161,9 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
---- !u!114 &6487650634616714395
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 20
+--- !u!114 &7093060888807900797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,11 +178,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -663248042
+      Data2: 1230987614
+      Data3: -693214060
+      Data4: -539043830
+    Path: event:/SFX/SquirrelThrowNut
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -192,5 +192,5 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 20
